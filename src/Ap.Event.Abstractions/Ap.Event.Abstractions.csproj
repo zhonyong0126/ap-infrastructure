@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+  </PropertyGroup>
+<PropertyGroup>
+	<PackageVersion>1.0.0</PackageVersion>
+	<Title>AP's Event Abstracts</Title>
+	<Authors>Roc Gao</Authors>
+	<Description>提供Event基础库</Description>
+	<Copyright>AP Chian</Copyright>
+	<PackageProjectUrl>https://github.com/rocgao/ap-infrastructure</PackageProjectUrl>
+</PropertyGroup>
+</Project>
