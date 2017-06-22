@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Ap.Web
 {
-    public abstract class ControllerBase : Controller, IOperatorProvider
+    public abstract class ApControllerBase : Controller, IOperatorProvider
     {
         private readonly ILogger _logger;
 
         protected ILogger Logger => _logger;
 
-        protected ControllerBase(ILoggerFactory loggerFactory)
+        protected ApControllerBase(ILoggerFactory loggerFactory)
         {
             _logger = loggerFactory.CreateLogger(GetType());
         }

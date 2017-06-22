@@ -17,11 +17,11 @@ using Ap.Infrastructure;
 
 namespace Ap.Web
 {
-    public abstract class StartupBase
+    public abstract class ApStartupBase
     {
         private readonly IConfiguration _config;
 
-        public StartupBase(IHostingEnvironment env, IConfiguration configuration)
+        public ApStartupBase(IHostingEnvironment env, IConfiguration configuration)
         {
             _config = configuration;
         }

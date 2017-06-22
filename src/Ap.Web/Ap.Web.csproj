@@ -23,7 +23,7 @@
 
   </ItemGroup>
 <PropertyGroup>
-	<PackageVersion>1.0.0</PackageVersion>
+	<PackageVersion>1.0.1</PackageVersion>
 	<Title>AP's Web abstract</Title>
 	<Authors>Roc Gao</Authors>
 	<Description>提供AP Web应用基础功能</Description>
