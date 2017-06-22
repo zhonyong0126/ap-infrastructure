@@ -12,5 +12,12 @@
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.3.0" />
   </ItemGroup>
-
+  <PropertyGroup>
+	<PackageVersion>1.0.0</PackageVersion>
+	<Title>AP's Infrastructer Lib</Title>
+	<Authors>Roc Gao</Authors>
+	<Description>提供一些基础类库</Description>
+	<Copyright>AP Chian</Copyright>
+	<PackageProjectUrl>https://github.com/rocgao/ap-infrastructure</PackageProjectUrl>
+</PropertyGroup>
 </Project>
