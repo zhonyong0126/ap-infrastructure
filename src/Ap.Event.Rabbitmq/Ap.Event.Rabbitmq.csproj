@@ -13,7 +13,7 @@
     <PackageReference Include="Ap.Event.Abstractions" Version="1.0.0" />
   </ItemGroup>
 <PropertyGroup>
-	<PackageVersion>1.0.0</PackageVersion>
+	<PackageVersion>$(VersionSuffix)</PackageVersion>
 	<Title>AP's Event Rabbitmq</Title>
 	<Authors>Roc Gao</Authors>
 	<Description>提供基于Rabbitmq的Ap.Event实现</Description>

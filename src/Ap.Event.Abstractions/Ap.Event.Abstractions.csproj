@@ -4,7 +4,7 @@
     <TargetFramework>netstandard1.6</TargetFramework>
   </PropertyGroup>
 <PropertyGroup>
-	<PackageVersion>1.0.0</PackageVersion>
+	<PackageVersion>$(VersionSuffix)</PackageVersion>
 	<Title>AP's Event Abstracts</Title>
 	<Authors>Roc Gao</Authors>
 	<Description>提供Event基础库</Description>

@@ -13,7 +13,7 @@
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.3.0" />
   </ItemGroup>
   <PropertyGroup>
-	<PackageVersion>1.0.0</PackageVersion>
+	<PackageVersion>$(VersionSuffix)</PackageVersion>
 	<Title>AP's Infrastructer Lib</Title>
 	<Authors>Roc Gao</Authors>
 	<Description>提供一些基础类库</Description>
