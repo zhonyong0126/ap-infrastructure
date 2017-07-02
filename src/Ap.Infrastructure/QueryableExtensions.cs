@@ -19,7 +19,7 @@ namespace Ap.Infrastructure
             , Expression<Func<TElement, string>> valueSelector
             , IEnumerable<string> values)
         {
-            if (!values.Any())
+            if (values==null ||!values.Any())
             {
                 return query;
             }
@@ -42,7 +42,7 @@ namespace Ap.Infrastructure
             , Expression<Func<TElement, string>> valueSelector
             , IEnumerable<string> values)
         {
-            if (!values.Any())
+            if (values==null ||!values.Any())
             {
                 return query;
             }
@@ -58,7 +58,7 @@ namespace Ap.Infrastructure
             , Expression<Func<TElement, TValue>> valueSelector
             , IEnumerable<TValue> values)
         {
-            if (!values.Any())
+            if (values==null || !values.Any())
             {
                 return query;
             }
