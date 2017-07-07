@@ -92,5 +92,28 @@ namespace Ap.Infrastructure
             }
             return query.Where(predicate);
         }
+
+        /// <summary>
+        ///  分页
+        /// </summary>
+        /// <param name="query">查谒表达式</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">分页大小</param>
+        /// <returns></returns>
+        public static IQueryable<TElement> Paged<TElement>(this IQueryable<TElement> query,int pageIndex,int pageSize)
+        {
+            return query.Skip((pageIndex -1) * pageSize).Take(pageSize);
+        }
+
+        /// <summary>
+        /// 分页
+        /// </summary>
+        /// <param name="query">查询表达式</param>
+        /// <param name="pagination">实现IHavePagination接口的对象</param>
+        /// <returns></returns>
+        public static IQueryable<TElement> Paged<TElement>(this IQueryable<TElement> query,IHavePagination pagination)
+        {
+            return Paged<TElement>(query,pagination.PageIndex,pagination.PageSize);
+        }
     }
 }
