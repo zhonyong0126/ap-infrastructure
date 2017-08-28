@@ -9,7 +9,7 @@ namespace Ap.Web
     /// <summary>
     /// ViewModel的AutoMapper映配置
     /// </summary>
-    static class ViewModelMapConfig
+    public static class ViewModelMapConfig
     {
         // public static string ToLongDateTime(this DateTime? dt)
         // {
@@ -70,6 +70,16 @@ namespace Ap.Web
             var dto = Mapper.Map<IRequest, TDto>(request);
             dto.Operator = operatorProvider.GetOperator();
             return dto;
+        }
+
+        public static TDto[] ToDtos<TDto>(this IRequest[] requests) where TDto:IDto,new()
+        {
+            return requests.Select(_=>_.ToDto<TDto>()).ToArray();
+        }
+
+        public static TDto[] ToDtos<TDto>(this IRequest[] requests,IOperatorProvider operatorProvider) where TDto:IDto,IHavingOperator,new()
+        {
+            return requests.Select(_=>_.ToDto<TDto>(operatorProvider)).ToArray();
         }
 
         public static TResponse ToResponse<TResponse>(this object obj) where TResponse : class, IResponse, new()

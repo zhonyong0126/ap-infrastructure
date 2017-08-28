@@ -8,5 +8,6 @@
         "**/.DS_Store": true,
         "**/bin/**":true,
         "**/obj/**":true
-    }
+    },
+    "python.pythonPath": "python3"
 }

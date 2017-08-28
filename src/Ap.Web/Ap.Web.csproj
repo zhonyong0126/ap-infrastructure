@@ -30,6 +30,8 @@
 	<Description>
     提供AP Web应用基础功能
     1.0.2: 升级Ap.Infrastructure到1.0.1
+    1.0.3: 增加IRequest,IResponse,DtoMap等功能
+    1.0.4: 修复ViewModelMapConfig类的可见性
   </Description>
 	<Copyright>AP China</Copyright>
 	<PackageProjectUrl>https://github.com/rocgao/ap-infrastructure</PackageProjectUrl>
