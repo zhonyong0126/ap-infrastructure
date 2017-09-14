@@ -1,11 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />
     <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
     <PackageReference Include="System.Reflection" Version="4.3.0" />
     <PackageReference Include="System.Reflection.Extensions" Version="4.3.0" />
@@ -13,11 +11,11 @@
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.3.0" />
   </ItemGroup>
   <PropertyGroup>
-	<PackageVersion>$(VersionSuffix)</PackageVersion>
-	<Title>AP's Infrastructer Lib</Title>
-	<Authors>Roc Gao</Authors>
-	<Description>提供一些基础类库</Description>
-	<Copyright>AP Chian</Copyright>
-	<PackageProjectUrl>https://github.com/rocgao/ap-infrastructure</PackageProjectUrl>
-</PropertyGroup>
+    <PackageVersion>$(VersionSuffix)</PackageVersion>
+    <Title>AP's Infrastructer Lib</Title>
+    <Authors>Roc Gao</Authors>
+    <Description>提供一些基础类库</Description>
+    <Copyright>AP Chian</Copyright>
+    <PackageProjectUrl>https://github.com/rocgao/ap-infrastructure</PackageProjectUrl>
+  </PropertyGroup>
 </Project>

@@ -2,6 +2,9 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http.Features.Authentication;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Logging;
+using System.Text.Encodings.Web;
 
 namespace Ap.Web.Authentication
 {
@@ -10,7 +13,13 @@ namespace Ap.Web.Authentication
         private readonly IBearerTokenExtractor _tokenExtractor;
         private readonly IAuthenticationTicketProvider _ticketProvider;
 
-        public BearerAuthenticationHandler(IBearerTokenExtractor tokenExractor, IAuthenticationTicketProvider ticketProvider)
+        //IOptionsMonitor<TOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock
+        public BearerAuthenticationHandler(IBearerTokenExtractor tokenExractor, IAuthenticationTicketProvider ticketProvider
+            ,IOptionsMonitor<BearerAuthenticationOptions> options
+            ,ILoggerFactory logger
+            ,UrlEncoder encoder
+            ,ISystemClock clock)
+            :base(options,logger,encoder,clock)
         {
             _tokenExtractor = tokenExractor;
             _ticketProvider = ticketProvider;
@@ -23,7 +32,7 @@ namespace Ap.Web.Authentication
                 var token = await _tokenExtractor.GetTokenAsync(Context.Request).ConfigureAwait(false);
                 if (string.IsNullOrEmpty(token))
                 {
-                    return AuthenticateResult.Skip();
+                    return AuthenticateResult.NoResult();
                 }
                 var ticket = await _ticketProvider.GetTicketAsync(token, Options, Context);
                 if (ticket != null)
@@ -39,9 +48,9 @@ namespace Ap.Web.Authentication
         }
 
 
-        protected override Task<bool> HandleUnauthorizedAsync(ChallengeContext context)
-        {
-            return base.HandleUnauthorizedAsync(context);
-        }
+        // protected override Task<bool> HandleUnauthorizedAsync(ChallengeContext context)
+        // {
+        //     return base.HandleUnauthorizedAsync(context);
+        // }
     }
 }

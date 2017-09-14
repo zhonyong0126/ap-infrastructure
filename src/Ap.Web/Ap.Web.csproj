@@ -1,25 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="6.0.2"/>
-    <PackageReference Include="Exceptionless.AspNetCore" Version="4.0.1951" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="1.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="1.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="1.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="1.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="1.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.1.2" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="1.0.0-rc3" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="1.0.0-rc3" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="1.0.0-rc3" />
+    <PackageReference Include="AutoMapper" Version="6.1.1"/>
+    <PackageReference Include="Exceptionless.AspNetCore" Version="4.0.1955" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="1.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="1.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="1.0.0" />
     <PackageReference Include="Ap.Infrastructure" Version="1.0.4" />
 
   </ItemGroup>

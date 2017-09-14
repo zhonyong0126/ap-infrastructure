@@ -119,6 +119,9 @@ namespace Ap.Web
                 _jwtBearerAuthenticationEnabled = false;
                 return;
             }
+
+            services.AddAuthentication("jwt").AddScheme<BearerAuthenticationOptions,BearerAuthenticationHandler>("jwt",o=>{});
+
             _jwtBearerAuthenticationEnabled = true;
             services.AddSingleton<HeaderTokenExtractor>();
             services.AddSingleton<CookieTokenExtractor>();
@@ -150,12 +153,13 @@ namespace Ap.Web
 
             if (_jwtBearerAuthenticationEnabled)
             {
-                app.UseMiddleware<BearerAuthenticationMiddleware>(new object[]{ Options.Create(new BearerAuthenticationOptions()
-                {
-                    AuthenticationScheme="Bearer",
-                    AutomaticChallenge=true,
-                    AutomaticAuthenticate=true
-                })});
+                // app.UseMiddleware<BearerAuthenticationMiddleware>(new object[]{ Options.Create(new BearerAuthenticationOptions()
+                // {
+                //     AuthenticationScheme="Bearer",
+                //     AutomaticChallenge=true,
+                //     AutomaticAuthenticate=true
+                // })});
+                app.UseAuthentication();
             }
 
             app.UseExceptionless(config);
