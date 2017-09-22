@@ -1,17 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="6.1.1"/>
+    <PackageReference Include="AutoMapper" Version="6.1.1" />
     <PackageReference Include="Exceptionless.AspNetCore" Version="4.0.1955" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.0.0" />
@@ -21,19 +20,18 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="1.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="1.0.0" />
     <PackageReference Include="Ap.Infrastructure" Version="1.0.6" />
-
   </ItemGroup>
-<PropertyGroup>
-	<PackageVersion>$(VersionSuffix)</PackageVersion>
-	<Title>AP's Web abstract</Title>
-	<Authors>Roc Gao</Authors>
-	<Description>
+  <PropertyGroup>
+    <PackageVersion>$(VersionSuffix)</PackageVersion>
+    <Title>AP's Web abstract</Title>
+    <Authors>Roc Gao</Authors>
+    <Description>
     提供AP Web应用基础功能
     1.0.2: 升级Ap.Infrastructure到1.0.1
     1.0.3: 增加IRequest,IResponse,DtoMap等功能
     1.0.4: 修复ViewModelMapConfig类的可见性
   </Description>
-	<Copyright>AP China</Copyright>
-	<PackageProjectUrl>https://github.com/rocgao/ap-infrastructure</PackageProjectUrl>
-</PropertyGroup>
+    <Copyright>AP China</Copyright>
+    <PackageProjectUrl>https://github.com/rocgao/ap-infrastructure</PackageProjectUrl>
+  </PropertyGroup>
 </Project>
