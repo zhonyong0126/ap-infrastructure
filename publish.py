@@ -103,12 +103,12 @@ def build_pack_project(baseDir, proj, version):
     if retcode != 0:
         return
 
-    retcode = do_work('Building...', 'dotnet build ' + proj + ' 1>/dev/null')
-    if retcode != 0:
-        return
+    # retcode = do_work('Building...', 'dotnet build ' + proj + ' 1>/dev/null')
+    # if retcode != 0:
+    #     return
 
     retcode = do_work(
-        'Packing...', 'dotnet pack -c Release --include-symbols --no-build --version-suffix ' + version + ' -o ' + artifactsDir + ' ' + proj + ' 1>/dev/null')
+        'Packing...', 'dotnet pack -c Release --include-symbols --version-suffix ' + version + ' -o ' + artifactsDir + ' ' + proj + ' 1>/dev/null')
     if retcode != 0:
         return
 
@@ -147,6 +147,6 @@ newVer = input(newVerMsg + ' Pls type new version number: ')
 
 projfile = make_project_file(cwd, choseProj)
 build_pack_project(cwd, projfile, newVer)
-upload_nupkg(os.path.join(get_artifacts_dir(cwd),choseProj + '.' + newVer + '.nupkg'))
+#upload_nupkg(os.path.join(get_artifacts_dir(cwd),choseProj + '.' + newVer + '.nupkg'))
 
 sys.exit(0)

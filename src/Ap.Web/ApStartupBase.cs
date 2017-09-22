@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using Ap.Web.Authentication;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using System.Linq;
 using Exceptionless;
@@ -32,8 +31,8 @@ namespace Ap.Web
             services.AddMvc(ConfigureMvcOptions)
                 .AddJsonOptions(jsonOptions =>
                 {
-                    jsonOptions.SerializerSettings.DateFormatString =Utils.ApShortDateFormat ;
-                }); 
+                    jsonOptions.SerializerSettings.DateFormatString = Utils.ApShortDateFormat;
+                });
 
             //注册Log
             services.AddLogging();
@@ -47,16 +46,6 @@ namespace Ap.Web
             //注册Options
             services.AddOptions();
             services.Configure<ApiResultWrapperSettings>(_config.GetSection("ApiResultWrappper"));
-
-            //注册Authorization
-            services.AddAuthorization(ConfigureAuthorization);
-            AddAuthorizationHandler(services);
-
-            //注册
-            ConfigureJwtBearerAuthentication(new JwtBeareAuthenticationOptions()
-            {
-                TokenExtractorFactoryType = typeof(BearerTokenExtractorFactory)
-            }, services);
 
             InternalConfigureServices(services);
 
@@ -88,48 +77,6 @@ namespace Ap.Web
             //options.OperationFilter<AuthResponsesOperationFilter>();
         }
 
-        /// <summary>
-        /// 配置Authorization
-        /// </summary>
-        /// <param name="options">选项</param>
-        /// <param name="services">services</param>
-        protected virtual void ConfigureAuthorization(AuthorizationOptions options)
-        {
-            options.AddPolicy(WebCommonConsts.Authorization_Policy_Loggedin, policy => policy.AddRequirements(new LoginRequirement()));
-        }
-
-        /// <summary>
-        /// 添加Authorization Handlers
-        /// </summary>
-        /// <param name="services"></param>
-        protected virtual void AddAuthorizationHandler(IServiceCollection services)
-        {
-            services.AddSingleton<IAuthorizationHandler, LoggedinAuthroizationHandler>();
-        }
-
-        private bool _jwtBearerAuthenticationEnabled = false;
-        /// <summary>
-        /// 配置JwtBeareAuthentication
-        /// </summary>
-        /// <param name="options"></param>
-        protected virtual void ConfigureJwtBearerAuthentication(JwtBeareAuthenticationOptions options, IServiceCollection services)
-        {
-            if (null == options)
-            {
-                _jwtBearerAuthenticationEnabled = false;
-                return;
-            }
-
-            services.AddAuthentication("jwt").AddScheme<BearerAuthenticationOptions,BearerAuthenticationHandler>("jwt",o=>{});
-
-            _jwtBearerAuthenticationEnabled = true;
-            services.AddSingleton<HeaderTokenExtractor>();
-            services.AddSingleton<CookieTokenExtractor>();
-            services.AddSingleton<QueryStringTokenExtractor>();
-            services.AddSingleton(typeof(IAuthenticationTicketProviderFactory), options.TicketProviderFactoryType);
-            services.AddSingleton(typeof(IBearerTokenExtractorFactory), options.TokenExtractorFactoryType);
-        }
-
 
         /// <summary>
         /// 配置其它服务
@@ -142,27 +89,25 @@ namespace Ap.Web
         /// </summary>
         protected virtual bool EnableRequestLog => true;
 
+        /// <summary>
+        /// 是否开启身份验证
+        /// </summary>
+        protected virtual bool EnableAuthentication => true;
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IConfiguration config, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(config.GetSection("Logging"));
-            //loggerFactory.AddDebug();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            if (_jwtBearerAuthenticationEnabled)
+            app.UseExceptionless(config);
+
+            if (EnableAuthentication)
             {
-                // app.UseMiddleware<BearerAuthenticationMiddleware>(new object[]{ Options.Create(new BearerAuthenticationOptions()
-                // {
-                //     AuthenticationScheme="Bearer",
-                //     AutomaticChallenge=true,
-                //     AutomaticAuthenticate=true
-                // })});
                 app.UseAuthentication();
             }
-
-            app.UseExceptionless(config);
 
             app.UseMvc();
 
