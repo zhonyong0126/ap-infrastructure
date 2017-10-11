@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Ap.Infrastructure
 {
-    public interface IHavingId
+    public interface IHasId
     {
-        int Id { get; set; }
+        long Id { get; set; }
     }
 }

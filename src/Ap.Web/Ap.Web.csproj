@@ -19,7 +19,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="1.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="1.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="1.0.0" />
-    <PackageReference Include="Ap.Infrastructure" Version="1.0.6" />
+    <PackageReference Include="Ap.Infrastructure" Version="1.0.7" />
   </ItemGroup>
   <PropertyGroup>
     <PackageVersion>$(VersionSuffix)</PackageVersion>
