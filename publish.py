@@ -147,6 +147,6 @@ newVer = input(newVerMsg + ' Pls type new version number: ')
 
 projfile = make_project_file(cwd, choseProj)
 build_pack_project(cwd, projfile, newVer)
-#upload_nupkg(os.path.join(get_artifacts_dir(cwd),choseProj + '.' + newVer + '.nupkg'))
+upload_nupkg(os.path.join(get_artifacts_dir(cwd),choseProj + '.' + newVer + '.nupkg'))
 
 sys.exit(0)

@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using System.Linq;
 using Exceptionless;
 using Ap.Infrastructure;
+using NLog.Extensions.Logging;
 
 namespace Ap.Web
 {
@@ -48,7 +49,7 @@ namespace Ap.Web
             services.Configure<ApiResultWrapperSettings>(_config.GetSection("ApiResultWrappper"));
 
             InternalConfigureServices(services);
-
+            
             return services.BuildServiceProvider();
         }
 
@@ -97,7 +98,9 @@ namespace Ap.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IConfiguration config, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(config.GetSection("Logging"));
+            // loggerFactory.AddConsole(config.GetSection("Logging"));
+            // loggerFactory.AddNLog(new NLogProviderOptions { CaptureMessageTemplates = true, CaptureMessageProperties =true });
+            // loggerFactory.ConfigureNLog("nlog.config");
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
