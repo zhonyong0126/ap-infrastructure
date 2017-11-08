@@ -101,7 +101,7 @@ namespace Ap.Web
             // loggerFactory.AddConsole(config.GetSection("Logging"));
             // loggerFactory.AddNLog(new NLogProviderOptions { CaptureMessageTemplates = true, CaptureMessageProperties =true });
             // loggerFactory.ConfigureNLog("nlog.config");
-
+            
             app.UseDefaultFiles();
             app.UseStaticFiles();
 

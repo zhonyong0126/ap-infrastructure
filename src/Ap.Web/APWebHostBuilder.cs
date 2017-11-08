@@ -3,15 +3,21 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.IO;
 using NLog.Web;
+using System;
 
 namespace Ap.Web
 {
     public class ApWebHostBuilder
     {
-        public static void BuildAndRun<TStartup>(IConfiguration config) where TStartup : class
+       
+        public static void BuildAndRun<TStartup>(IConfiguration config,Action<WebHostBuilder> webHostBuilderAction=null) where TStartup : class
         {
             NLogBuilder.ConfigureNLog("nlog.config");
             var builder = new WebHostBuilder();
+            if(null!=webHostBuilderAction)
+            {
+                webHostBuilderAction(builder);
+            }
             var host = builder.UseConfiguration(config)
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
