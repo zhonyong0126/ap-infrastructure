@@ -61,6 +61,7 @@ namespace Ap.Web
         {
             options.Filters.Add(typeof(CustomizedApiResultFilter));
             options.Filters.Add(typeof(BizExceptionFilterAttribute));
+            options.Filters.Add(typeof(UnhandledExceptionAttribute));
         }
 
         /// <summary>
