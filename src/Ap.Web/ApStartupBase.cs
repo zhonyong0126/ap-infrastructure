@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using System.Linq;
 using Exceptionless;
 using Ap.Infrastructure;
-using NLog.Extensions.Logging;
 
 namespace Ap.Web
 {

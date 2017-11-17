@@ -115,7 +115,7 @@ def build_pack_project(baseDir, proj, version):
     return 0
 
 def upload_nupkg(nupkgFile):
-    retcode=do_work('Uploading...','dotnet nuget push ' + nupkgFile + ' f86deb23-2448-486a-a973-5880a07915a0 --source  https://www.myget.org/feed/Packages/roc-ap' )
+    retcode=do_work('Uploading...','dotnet nuget push ' + nupkgFile + ' --api-key f86deb23-2448-486a-a973-5880a07915a0 --source  https://www.myget.org/F/roc-ap/api/v2/package' )
     if retcode!=0:
         return None
     return 0
