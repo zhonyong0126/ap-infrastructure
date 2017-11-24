@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 
 namespace Ap.Web
 {
-    class CustomizedApiResultFilter : IResultFilter
+    public class CustomizedApiResultFilter : IResultFilter
     {
         private readonly ApiResultWrapperSettings _apiResultWrapperSettings;
 
@@ -16,12 +16,12 @@ namespace Ap.Web
         {
         }
 
-        public void OnResultExecuting(ResultExecutingContext context)
+        protected virtual bool NeedToProcess(ResultExecutingContext context)
         {
             //检查是否已在设置中关闭
             if (!_apiResultWrapperSettings.UseCustomizedApiResultFilter)
             {
-                return;
+                return false;
             }
 
             var path = context.HttpContext.Request.Path;
@@ -29,17 +29,43 @@ namespace Ap.Web
             if (!string.IsNullOrEmpty(_apiResultWrapperSettings.ExcludeUrlPathPrefix)
                 && path.StartsWithSegments(_apiResultWrapperSettings.ExcludeUrlPathPrefix))
             {
-                return;
+                return false;
             }
 
             if (!string.IsNullOrEmpty(_apiResultWrapperSettings.IncludeUrlPathPrefix)
                 && !path.StartsWithSegments(_apiResultWrapperSettings.IncludeUrlPathPrefix))
             {
-                return;
+                return false;
             }
 
             //如果在请求的Url中包含noresultwrapping参数，则不对结果进行wrap
             if (context.HttpContext.Request.Query.ContainsKey("noresultwrapping"))
+            {
+                return false;
+            }
+
+            var objResult = context.Result as ObjectResult;
+            if (null == objResult)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        protected virtual void Process(ObjectResult objResult)
+        {
+            objResult.Value = new ApiResultWrapper()
+            {
+                Code = "success",
+                Message = "",
+                Value = objResult.Value
+            };
+        }
+
+        public void OnResultExecuting(ResultExecutingContext context)
+        {
+            if (!this.NeedToProcess(context))
             {
                 return;
             }
@@ -49,18 +75,7 @@ namespace Ap.Web
                 context.Result = new ObjectResult(null);
             }
 
-            var objResult = context.Result as ObjectResult;
-            if (null == objResult)
-            {
-                return;
-            }
-
-            objResult.Value = new ApiResultWrapper()
-            {
-                Code = "success",
-                Message = "",
-                Value = objResult.Value
-            };
+            this.Process(context.Result as ObjectResult);
         }
     }
 }

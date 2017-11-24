@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Ap.Web
 {
-    class BizExceptionFilterAttribute : ExceptionFilterAttribute
+    public class BizExceptionFilterAttribute : ExceptionFilterAttribute
     {
 
         private readonly IModelMetadataProvider _modelMetadataProvider;
