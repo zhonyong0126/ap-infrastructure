@@ -29,10 +29,7 @@ namespace Ap.Web
         {
             //注册Mvc
             services.AddMvc(ConfigureMvcOptions)
-                .AddJsonOptions(jsonOptions =>
-                {
-                    jsonOptions.SerializerSettings.DateFormatString = Utils.ApShortDateFormat;
-                });
+                .AddJsonOptions(ConfigureMvcJsonOptions);
 
             //注册Log
             services.AddLogging();
@@ -48,7 +45,7 @@ namespace Ap.Web
             services.Configure<ApiResultWrapperSettings>(_config.GetSection("ApiResultWrappper"));
 
             InternalConfigureServices(services);
-            
+
             return services.BuildServiceProvider();
         }
 
@@ -61,6 +58,11 @@ namespace Ap.Web
             options.Filters.Add(typeof(CustomizedApiResultFilter));
             options.Filters.Add(typeof(BizExceptionFilterAttribute));
             options.Filters.Add(typeof(UnhandledExceptionAttribute));
+        }
+
+        protected virtual void ConfigureMvcJsonOptions(MvcJsonOptions jsonOptions)
+        {
+            jsonOptions.SerializerSettings.DateFormatString = Utils.ApShortDateFormat;
         }
 
         /// <summary>
@@ -101,7 +103,7 @@ namespace Ap.Web
             // loggerFactory.AddConsole(config.GetSection("Logging"));
             // loggerFactory.AddNLog(new NLogProviderOptions { CaptureMessageTemplates = true, CaptureMessageProperties =true });
             // loggerFactory.ConfigureNLog("nlog.config");
-            
+
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
