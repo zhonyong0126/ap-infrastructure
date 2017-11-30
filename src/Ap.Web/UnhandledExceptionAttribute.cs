@@ -13,7 +13,7 @@ namespace Ap.Web
 
         public override void OnException(ExceptionContext context)
         {
-            this.logger.LogWarning(context.Exception, $"RequestId:{context.HttpContext.Connection.Id},{context.Exception.Message}");
+            this.logger.LogCritical(context.Exception, $"RequestId:{context.HttpContext.Connection.Id},{context.Exception.Message}");
         }
     }
 }
