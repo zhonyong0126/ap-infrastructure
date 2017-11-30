@@ -44,11 +44,11 @@ namespace Ap.Web
                 return false;
             }
 
-            var objResult = context.Result as ObjectResult;
-            if (null == objResult)
-            {
-                return false;
-            }
+            // var objResult = context.Result as ObjectResult;
+            // if (null == objResult)
+            // {
+            //     return false;
+            // }
 
             return true;
         }
